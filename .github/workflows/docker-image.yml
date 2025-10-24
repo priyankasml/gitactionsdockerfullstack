@@ -29,7 +29,7 @@ jobs:
           context: ./GOAL-SPRINGBOOT
           file: ./GOAL-SPRINGBOOT/backend.Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/hotel-backend:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/goal-backend:latest
 
       - name: Build and push frontend image
         uses: docker/build-push-action@v5
@@ -37,4 +37,4 @@ jobs:
           context: ./GOAL-REACT
           file: ./GOAL-REACT/frontend.Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/hotel-frontend:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/goal-frontend:latest
