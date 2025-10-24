@@ -1,0 +1,41 @@
+services:
+  mysqldb:
+    image: mysql:8
+    container_name: mysql-hotelmandb
+    environment:
+      MYSQL_ROOT_PASSWORD: docker
+      MYSQL_DATABASE: hotelmandb
+    ports:
+      - "3390:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - springboot-mysql-net
+
+  backend:
+    image: priyankasml/hotel-backend:latest
+    container_name: springboot
+    ports:
+      - "7009:2000"
+    depends_on:
+      - mysqldb
+    restart: on-failure
+    networks:
+      - springboot-mysql-net
+
+  frontend:
+    image: priyankasml/hotel-frontend:latest
+    container_name: react
+    ports:
+      - "3030:80"
+    depends_on:
+      - backend
+    restart: on-failure
+    networks:
+      - springboot-mysql-net
+
+volumes:
+  mysql_data:
+
+networks:
+  springboot-mysql-net:
