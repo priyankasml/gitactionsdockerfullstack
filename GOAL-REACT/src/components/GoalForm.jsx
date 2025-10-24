@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-import config from "./config.js";
+//import config from "./config.js";
 import "./style.css";
 
 const GoalForm = () => {
@@ -21,7 +21,7 @@ const GoalForm = () => {
   });
   const [message, setMessage] = useState("");
   const [editMode, setEditMode] = useState(false);
-  const baseUrl = `${config.url}/goalapi`;
+  const baseUrl = `${import.meta.env.VITE_API_URL}/goalapi`;
 
   useEffect(() => {
     if (editGoal) {

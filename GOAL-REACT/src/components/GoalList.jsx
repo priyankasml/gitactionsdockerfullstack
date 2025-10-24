@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import config from "./config.js";
+//import config from "./config.js";
 import "./style.css";
 
 const GoalList = () => {
   const [goals, setGoals] = useState([]);
   const [message, setMessage] = useState("");
-  const baseUrl = `${config.url}/goalapi`;
+  const baseUrl = `${import.meta.env.VITE_API_URL}/goalapi`;
+
   const navigate = useNavigate();
 
   useEffect(() => {
